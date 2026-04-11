@@ -6,84 +6,97 @@
     <title>Login Page</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
+        /* Glassmorphism container */
         .login-container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            width: 320px;
-        }
-
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            outline: none;
-        }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            border-color: #4facfe;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        input[type="submit"],
-        input[type="reset"] {
-            width: 48%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        input[type="submit"] {
-            background-color: #4facfe;
+            width: 340px;
+            padding: 35px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             color: white;
         }
 
-        input[type="reset"] {
-            background-color: #ccc;
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
-        input[type="submit"]:hover {
-            background-color: #3a8dde;
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
         }
 
-        input[type="reset"]:hover {
-            background-color: #aaa;
+        /* Inputs */
+        input {
+            width: 100%;
+            padding: 12px 10px;
+            border: none;
+            border-bottom: 2px solid rgba(255,255,255,0.6);
+            background: transparent;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        /* Floating label */
+        label {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        input:focus + label,
+        input:valid + label {
+            top: -8px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #ff9966, #ff5e62);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .reset-btn {
+            margin-top: 10px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .reset-btn:hover {
+            background: rgba(255,255,255,0.5);
         }
 
         .register {
@@ -93,7 +106,7 @@
         }
 
         .register a {
-            color: #4facfe;
+            color: #ffd369;
             text-decoration: none;
             font-weight: bold;
         }
@@ -107,25 +120,23 @@
 <body>
     <form method="post" action="login.jsp">
         <div class="login-container">
-            <h2>Login</h2>
+            <h2>Welcome Back</h2>
 
             <div class="form-group">
+                <input type="text" name="userName" required>
                 <label>Username</label>
-                <input type="text" name="userName" placeholder="Enter username" required>
             </div>
 
             <div class="form-group">
+                <input type="password" name="password" required>
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Enter password" required>
             </div>
 
-            <div class="btn-group">
-                <input type="submit" value="Login">
-                <input type="reset" value="Reset">
-            </div>
+            <input type="submit" value="Login" class="btn">
+            <input type="reset" value="Reset" class="btn reset-btn">
 
             <div class="register">
-                New User? <a href="register.jsp">Register Here</a>
+                New User? <a href="register.jsp">Register</a>
             </div>
         </div>
     </form>
